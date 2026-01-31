@@ -1,64 +1,74 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 * {
+  margin: 0%;
   padding: 0;
-  margin: 0;
   box-sizing: border-box;
 }
 body {
-  background-color: black;
-  color: white;
-  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
   background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 48%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(7, 55, 151, 1) 50%,
     rgba(0, 212, 255, 1) 100%
   );
 }
+#Calculator {
+  max-width: 500px;
+  background-color: rgb(22, 22, 34);
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 15px;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 52%,
+    rgba(253, 187, 45, 1) 100%
+  );
+}
+
+#display {
+  width: 100%;
+  padding: 25px;
+  font-size: 5rem;
+  background-color: black;
+  border: none;
+  overflow: hidden;
+  color: white;
+  text-align: right;
+}
+#keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 25px;
+  gap: 10px;
+}
 button {
-  width: 150px;
-  padding: px;
-  font-size: 20px;
-  text-transform: uppercase;
-  border-radius: 20px;
-  border: 3px solid white;
-  background-color: transparent;
-  color: yellow;
-  margin-left: 300px;
-  margin-top: 100px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(74, 74, 74);
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
 }
-img {
-  width: 150px;
-  padding: 20px;
+button:hover {
+  background-color: aliceblue;
+  color: black;
 }
-.para1 {
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-top: 100px;
-  color: darkgoldenrod;
-  text-align: center;
+button:active {
+  background-color: blue;
 }
-.para2 {
-  text-align: center;
-  margin-top: 50px;
-  font-size: 30px;
-  margin-right: 20px;
-  word-spacing: 30px;
-  letter-spacing: 3px;
-  color: darkseagreen;
-  text-transform: uppercase;
+.operators {
+  background-color: rgb(27, 243, 27);
 }
-.para3 {
-  margin-top: 50px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  text-align: center;
+.operators:hover {
+  background-color: pink;
 }
-.head {
-  text-align: center;
-  font-size: 80px;
+.operators:active {
+  background-color: red;
 }
-.reset {
-  width: 150px;
-  padding: 30px;
+.clear {
+  background-color: orange;
 }
