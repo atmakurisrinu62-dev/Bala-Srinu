@@ -1,100 +1,92 @@
-// ================= ATM DATA =================
-let balance = 1000;
-let enteredAmount = 0;
-let isLoggedIn = false;
+let score = JSON.parse(localStorage.getItem("score")) || {
+  Wins: 0,
+  Losses: 0,
+  Ties: 0,
+};
 
-// 5 valid PINs
-const passwords = ["1234", "1111", "2222", "3333", "9999"];
-
-// ================= ELEMENTS =================
-const screen = document.getElementById("input");
-const pinInput = document.getElementById("input2");
-const buttons = document.querySelectorAll("button");
-
-// ================= SCREEN MESSAGE FUNCTION =================
-function showMessage(msg) {
-  screen.value += msg + "\n";
-  screen.scrollTop = screen.scrollHeight;
+if (score === null) {
+  score = {
+    Wins: 0,
+    Losses: 0,
+    Ties: 0,
+  };
 }
+function computer() {
+  const number = Math.random();
+  let computerGuess = "";
+  if (number >= 0 && number < 1 / 3) {
+    computerGuess = "Rock";
+  } else if (number >= 1 / 3 && number < 2 / 3) {
+    computerGuess = "Paper";
+  } else if (number >= 2 / 3 && number < 1) {
+    computerGuess = "Scissor";
+  }
+  return computerGuess;
+}
+function playMove(value) {
+  const computerGuess = computer();
+  let result = " ";
 
-// Initial message
-showMessage("Enter PIN");
+  if (value === "Rock") {
+    if (computerGuess === "Rock") {
+      result = " You Tie";
+    } else if (computerGuess === "Paper") {
+      result = "You Loss";
+    } else if (computerGuess === "Scissor") {
+      result = "You Win";
+    }
+  } else if (value === "Paper") {
+    if (computerGuess === "Rock") {
+      result = "You Win";
+    } else if (computerGuess === "Paper") {
+      result = "You Tie";
+    } else if (computerGuess === "Scissor") {
+      result = "You Loss";
+    }
+  } else if (value === "Scissor") {
+    if (computerGuess === "Rock") {
+      result = "You Loss";
+    } else if (computerGuess === "Paper") {
+      result = "You Win";
+    } else if (computerGuess === "Scissor") {
+      result = "You Tie";
+    }
+  }
+  if (result === "You Win") {
+    score.wins += 1;
+  } else if (result === "You Loss") {
+    score.losses += 1;
+  } else if (result === "You Tie") {
+    score.Ties += 1;
+  }
+  localStorage.setItem("score", JSON.stringify(score));
+  const element = document.querySelector(".para1");
+  element.innerHTML = ` You Picked ${value} computer Picked ${computerGuess} `;
 
-// ================= BUTTON EVENTS =================
-buttons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const value = btn.innerText;
-
-    if (value === "Enter") enterPin();
-    else if (value === "+100") addAmount(100);
-    else if (value === "+200") addAmount(200);
-    else if (value === "+500") addAmount(500);
-    else if (value === "Deposit") deposit();
-    else if (value === "WithDraw") withdraw();
-    else if (value === "Close") closeATM();
-  });
+  const result1 = document.querySelector(".para3");
+  result1.innerHTML = `${result}`;
+  const element2 = document.querySelector(".para2");
+  element2.innerHTML = ` Wins=${score.wins}  Losses=${score.losses}  Ties=${score.Ties}`;
+}
+let button1 = document.querySelector(".btn1");
+button1.addEventListener("click", () => {
+  computer();
+  playMove("Rock");
 });
-
-// ================= FUNCTIONS =================
-
-function enterPin() {
-  screen.disabled = false;
-
-  if (passwords.includes(pinInput.value)) {
-    isLoggedIn = true;
-    showMessage("Access Granted ✔ Balance ₹" + balance);
-  } else {
-    showMessage("Wrong PIN ❌");
-  }
-  pinInput.value = "";
-}
-
-function addAmount(amount) {
-  if (!isLoggedIn) {
-    showMessage("Please Enter PIN First");
-    return;
-  }
-  enteredAmount += amount;
-  showMessage("Amount Selected ₹" + enteredAmount);
-}
-
-function deposit() {
-  if (!isLoggedIn || enteredAmount === 0) {
-    showMessage("Select Amount First");
-    return;
-  }
-  balance += enteredAmount;
-  showMessage("Deposited ₹" + enteredAmount + " | Balance ₹" + balance);
-  enteredAmount = 0;
-}
-
-function withdraw() {
-  if (!isLoggedIn || enteredAmount === 0) {
-    showMessage("Select Amount First");
-    return;
-  }
-  if (enteredAmount > balance) {
-    showMessage("Insufficient Balance ❌");
-  } else {
-    balance -= enteredAmount;
-    showMessage("Withdrawn ₹" + enteredAmount + " | Balance ₹" + balance);
-  }
-  enteredAmount = 0;
-}
-
-function closeATM() {
-  isLoggedIn = false;
-  enteredAmount = 0;
-  showMessage("ATM Closed 🔒");
-  pinInput.value = "";
-}
-function closeATM() {
-  isLoggedIn = false;
-  enteredAmount = 0;
-
-  // clear and close screen
-  screen.value = "";
-  screen.disabled = true;
-
-  pinInput.value = "";
-}
+let button2 = document.querySelector(".btn2");
+button2.addEventListener("click", () => {
+  computer();
+  playMove("Paper");
+});
+let button3 = document.querySelector(".btn3");
+button3.addEventListener("click", () => {
+  computer();
+  playMove("Scissor");
+});
+let reset = document.querySelector(".reset");
+reset.addEventListener("click", () => {
+  score.wins = 0;
+  score.losses = 0;
+  score.Ties = 0;
+  localStorage.removeItem("score");
+});

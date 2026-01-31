@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <title>Welcome Page</title>
+     <style>
+          /* Full screen gradient background with animation */
+          body {
+               margin: 0;
+               height: 100vh;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-family: "Segoe UI", sans-serif;
+               background: linear-gradient(135deg, #ff6a00, #ee0979, #00c6ff, #0072ff);
+               background-size: 400% 400%;
+               animation: gradientMove 12s ease infinite;
+          }
+
+          @keyframes gradientMove {
+               0% {
+                    background-position: 0% 50%;
+               }
+
+               50% {
+                    background-position: 100% 50%;
+               }
+
+               100% {
+                    background-position: 0% 50%;
+               }
+          }
+
+          /* Welcome text styling */
+          h1 {
+               font-size: 70px;
+               color: #fff;
+               text-transform: uppercase;
+               letter-spacing: 8px;
+               text-align: center;
+               text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+               animation: glow 2s ease-in-out infinite alternate;
+          }
+
+          @keyframes glow {
+               from {
+                    text-shadow: 0 0 10px #ff9a9e, 0 0 20px #fad0c4;
+               }
+
+               to {
+                    text-shadow: 0 0 20px #00f2fe, 0 0 30px #4facfe;
+               }
+          }
+     </style>
+</head>
+
+<body>
+     <h1 style="letter-spacing: 5px;font-size:200px;">Welcome</h1>
+      <div style="text-align: right; font-size: 40px;">
+      <a href="link.html">➡ View Hospital Location</a>
+    </div>
+</body>
+
+</html>

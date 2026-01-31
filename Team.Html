@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-image: url(data:image/jpeg;base64,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);
+      background-size: cover;
+    }
+    .container {
+      background: white;
+      padding: 50px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 700px;
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #34495e;
+    }
+    @media (max-width:600px) {
+      .container { width: 95%; padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Patient Registration</h2>
+    <form id="regForm">
+      <label>Patient Name:</label>
+      <input type="text" id="pname" required>
+
+      <label>S/o or D/o of:</label>
+      <input type="text" id="guardian" required>
+
+      <label>Age:</label>
+      <input type="number" id="age" min="1" max="120" required>
+
+      <label>Gender:</label>
+      <select id="gender" required>
+        <option value="">-- Select Gender --</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label>Address:</label>
+      <input type="text" id="address" required>
+
+      <label>Email:</label>
+      <input type="email" id="email" required>
+
+      <label>Phone Number:</label>
+      <input type="tel" id="phone" required>
+
+      <label>Consult Doctor:</label>
+      <select id="doctor" required>
+        <option value="">-- Select Doctor --</option>
+        <option>Dr. Ramesh (Cardiologist)</option>
+        <option>Dr. Priya (Gynecologist)</option>
+        <option>Dr. Anil (Orthopedic)</option>
+        <option>Dr. Kavya (ENT)</option>
+      </select>
+
+      <label>Appointment Slot:</label>
+      <select id="slot" required>
+        <option value="">-- Select Slot --</option>
+        <option>9:00 AM - 10:00 AM</option>
+        <option>10:00 AM - 11:00 AM</option>
+        <option>11:00 AM - 12:00 PM</option>
+        <option>2:00 PM - 3:00 PM</option>
+        <option>3:00 PM - 4:00 PM</option>
+      </select>
+
+      <button type="submit">Register Patient</button>
+    </form>
+  </div>
+
+<script>
+document.getElementById("regForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("pname").value.trim();
+  const guardian = document.getElementById("guardian").value.trim();
+  const age = document.getElementById("age").value;
+  const gender = document.getElementById("gender").value;
+  const address = document.getElementById("address").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const doctor = document.getElementById("doctor").value;
+  const slot = document.getElementById("slot").value;
+
+  // validations
+  if(!/^[A-Za-z ]+$/.test(name)){
+    alert("Patient name must contain only letters");
+    return;
+  }
+  if(!/^[A-Za-z ]+$/.test(guardian)){
+    alert("Guardian name must contain only letters");
+    return;
+  }
+  if(!/^[0-9]+$/.test(phone)){
+    alert("Phone number must be digits only");
+    return;
+  }
+  if(!email.endsWith("@gmail.com")){
+    alert("Email must end with @gmail.com");
+    return;
+  }
+
+  // Save patient data in localStorage
+  const patient = { name, guardian, age, gender, address, email, phone, doctor, slot };
+  let patients = JSON.parse(localStorage.getItem("patients")) || [];
+  patients.push(patient);
+  localStorage.setItem("patients", JSON.stringify(patients));
+
+  alert("Patient Registered Successfully!");
+  window.location.href = "patients.html"; // go to listing page
+});
+</script>
+
+</body>
+</html>
